@@ -19,6 +19,7 @@ set -e
 set -p pipefail
 
 DEFAULT_BOOTSTRAP_IDENTITIES='["bootstrap"]'
+DEFAULT_BOOTSTRAP_DIRECTORY="/opt/wsid-idp-bootstrap"
 PLAYBOOK_FILE_NAME=wsid_idp_playbook.yml
 
 # Prerequisites  (presumed to be installed): curl, git, ansible
@@ -53,6 +54,11 @@ PLAYBOOK
 
 echo "CURRENT DIRECTORY: $( pwd )"
 export ANSIBLE_VAR_WSID_IDENTITIES=${ANSIBLE_VAR_WSID_IDENTITIES:-$DEFAULT_BOOTSTRAP_IDENTITIES}
+export BOOTSTRAP_DIRECTORY=${BOOTSTRAP_DIRECTORY:-$DEFAULT_BOOTSTRAP_DIRECTORY}
+
+mkdir -p "$BOOTSTRAP_DIRECTORY" 
+cd $BOOTSTRAP_DIRECTORY 
+
 preconfigure_ansible
 initialize_playbook
 set -x
