@@ -51,10 +51,10 @@ initialize_playbook() {
 PLAYBOOK
 }
 
-
+echo "CURRENT DIRECTORY: $( pwd )"
 export ANSIBLE_VAR_WSID_IDENTITIES=${ANSIBLE_VAR_WSID_IDENTITIES:-$DEFAULT_BOOTSTRAP_IDENTITIES}
 preconfigure_ansible
 initialize_playbook
 set -x
-ansible-galaxy install -p ./roles https://github.com/hleb-rubanau/ansible-role-wsid-idp-basic-bootstrap.git
+ansible-galaxy install -p ./roles git+https://github.com/hleb-rubanau/ansible-role-wsid-idp-basic-bootstrap.git
 exec ansible-playbook run $PLAYBOOK_FILE_NAME
