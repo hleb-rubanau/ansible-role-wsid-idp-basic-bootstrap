@@ -11,11 +11,13 @@
   delay: 15
   wait_for:
     path: "{{ nginx_le_install_dir }}/data/storage/letsencrypt/etc/live/prod/fullchain.pem"
+    timeout: 60
 - name: wait for WSID identity to be generated
   wait_for:
     path: "{{ wsid_var_run }}/public/{{item}}/passwdhash"
-    timeout: 100
+    timeout: 180
   loop: "{{ wsid_identities  }}"
-- name: wait for SSL to come up
+- name: wait for SSL to come up (should already be)
   wait_for:
     port: 443
+    timeout: 30
