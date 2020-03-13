@@ -1,0 +1,14 @@
+---
+dependencies: 
+  - src: https://github.com/hleb-rubanau/ansible-role-docker
+    name: docker
+  - src: https://github.com/hleb-rubanau/ansible-role-nginx-letsencrypted
+    name: nginx_letsencrypted
+galaxy_info:
+  role_name: wsid-idp-basic-bootstrap
+  author: Hleb Rubanau
+  description: Integrates nginx-letsenrypted and ansible-wsid-basic on a bare new host for subsequent authorization
+  license: MIT
+  min_ansible_version: 2.4
+  galaxy_tags:
+    - wsid
