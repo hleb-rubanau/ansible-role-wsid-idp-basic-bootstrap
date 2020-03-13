@@ -57,4 +57,4 @@ preconfigure_ansible
 initialize_playbook
 set -x
 ansible-galaxy install -p ./roles git+https://github.com/hleb-rubanau/ansible-role-wsid-idp-basic-bootstrap.git
-exec ansible-playbook run $PLAYBOOK_FILE_NAME
+exec ansible-playbook $PLAYBOOK_FILE_NAME
