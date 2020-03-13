@@ -14,7 +14,8 @@
 - name: wait for WSID identity to be generated
   wait_for:
     path: "{{ wsid_var_run }}/public/{{item}}/passwdhash"
-  loop: wsid_identities
+    timeout: 100
+  loop: "{{ wsid_identities  }}"
 - name: wait for SSL to come up
   wait_for:
     port: 443
