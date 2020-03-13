@@ -6,7 +6,7 @@
         
         # expose wsid identity
         include {{ wsid_includes_dir }}/nginx-expose.conf ;
-    insertafter: "\s+include /etc/nginx/ssl_params ;"
+    insertafter: "\\s+include /etc/nginx/ssl_params ;"
 - name: wait for letsencrypt cert to be generated
   delay: 15
   wait_for:
