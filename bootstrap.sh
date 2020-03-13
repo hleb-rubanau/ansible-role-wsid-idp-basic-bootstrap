@@ -22,6 +22,14 @@ DEFAULT_BOOTSTRAP_IDENTITIES='["bootstrap"]'
 DEFAULT_BOOTSTRAP_DIRECTORY="/opt/wsid-idp-bootstrap"
 PLAYBOOK_FILE_NAME=wsid_idp_playbook.yml
 
+if [ -e /etc/debian_version ]; then 
+    if [[ "$( cat /etc/debian_version )" == 10.* ]]; then 
+        echo "Detected Debian 10: Forsing ansible enterpreter to be python3"
+        export ANSIBLE_VAR_ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3
+    fi
+fi 
+
+
 # Prerequisites  (presumed to be installed): curl, git, ansible
 
 preconfigure_ansible() {
