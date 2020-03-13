@@ -11,7 +11,6 @@
   delay: 15
   wait_for:
     path: "{{ nginx_le_install_dir }}/data/storage/letsencrypt/etc/live/prod/fullchain.pem"
-    timeout: 60
 - name: wait for SSL to come up (should already be)
   wait_for:
     port: 443
